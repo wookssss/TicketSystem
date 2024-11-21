@@ -10,13 +10,12 @@ import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
-@Table(name = "users")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Setter
 @ToString
 @Entity
-public class User extends AuditableEntity implements UserDetails {
+public class Customer extends AuditableEntity implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false)
@@ -34,10 +33,16 @@ public class User extends AuditableEntity implements UserDetails {
     @Column(nullable = false, unique = true)
     private String phoneNumber;
 
+    @Column(nullable = false)
+    private Integer point;
+
+    @Column(nullable = false)
+    private String grade;
+
     private LocalDateTime lastLoginAt;
 
     @Builder
-    public User(String email, String password, String name, String phoneNumber){
+    public Customer(String email, String password, String name, String phoneNumber){
         this.email = email;
         this.password = password;
         this.name = name;

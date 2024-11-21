@@ -8,11 +8,13 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-public class UserRequest {
+public class CustomerRequest {
     private Long id;
     private String email;
     private String password;
     private String name;
     private String phoneNumber;
+    private Integer point;
+    private String grade;
     private LocalDateTime lastLoginAt;
 }
