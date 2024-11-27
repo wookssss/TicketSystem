@@ -12,8 +12,6 @@ import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Setter
-@ToString
 @Entity
 public class Customer extends AuditableEntity implements UserDetails {
     @Id

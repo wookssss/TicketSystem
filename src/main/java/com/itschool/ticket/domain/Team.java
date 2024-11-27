@@ -1,12 +1,14 @@
 package com.itschool.ticket.domain;
 
 import com.itschool.ticket.domain.base.AuditableEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.Builder;
+import jakarta.persistence.*;
+import lombok.*;
 
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Entity
 public class Team extends AuditableEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,9 +17,4 @@ public class Team extends AuditableEntity {
 
     @Column(unique = true, nullable = false)
     private String name;
-
-    @Builder
-    public Team(String name){
-        this.name = name;
-    }
 }
