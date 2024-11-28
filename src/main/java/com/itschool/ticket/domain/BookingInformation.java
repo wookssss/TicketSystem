@@ -4,8 +4,6 @@ import com.itschool.ticket.domain.base.AuditableEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.UUID;
-
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -21,10 +19,10 @@ public class BookingInformation extends AuditableEntity {
     private String bookingCode;
 
     @Column(nullable = false)
-    private Integer totalNumber;
+    private Long totalNumber;
 
     @Column(nullable = false)
-    private Integer totalAmount;
+    private Long totalAmount;
 
     @Column(nullable = false)
     private String receiveMethod;
@@ -32,4 +30,8 @@ public class BookingInformation extends AuditableEntity {
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name="day_of_match_id", nullable = false)
+    private DayOfMatch dayOfMatch;
 }

@@ -4,7 +4,9 @@ import com.itschool.ticket.domain.base.AuditableEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
+@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Getter
 @Entity
 public class Seat extends AuditableEntity {
@@ -17,16 +19,9 @@ public class Seat extends AuditableEntity {
     private String seatGrade;
 
     @Column(nullable = false)
-    private Integer price;
+    private Long price;
 
     @ManyToOne
     @JoinColumn(name ="stadium_id",nullable = false)
     private Stadium stadium;
-
-    @Builder
-    public Seat(String seatGrade, Integer price, Stadium stadium){
-        this.seatGrade = seatGrade;
-        this.price = price;
-        this.stadium = stadium;
-    }
 }

@@ -32,12 +32,4 @@ public class SeatDetail extends AuditableEntity {
     @ManyToOne
     @JoinColumn(name = "seat_id", nullable = false)
     private Seat seat;
-
-    @Builder
-    public SeatDetail(String seatZone, Integer seatRow, Integer seatNumber, Seat seat){
-        this.seatZone = seatZone;
-        this.seatRow = seatRow;
-        this.seatNumber = seatNumber;
-        this.seat = seat;
-    }
 }

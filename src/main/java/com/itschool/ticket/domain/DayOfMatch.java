@@ -2,15 +2,14 @@ package com.itschool.ticket.domain;
 
 import com.itschool.ticket.domain.base.AuditableEntity;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.LocalDateTime;
 
+@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Getter
 @Entity
 public class DayOfMatch extends AuditableEntity {
@@ -30,18 +29,10 @@ public class DayOfMatch extends AuditableEntity {
     private Boolean isAvailable;
 
     @ManyToOne
-    @JoinColumn(name = "stadium_id", nullable = false)
-    private Stadium stadium;
+    @JoinColumn(name = "team_stadium_id", nullable = false)
+    private TeamStadium teamStadium;
 
     @ManyToOne
     @JoinColumn(name = "away_team_id",nullable = false)
     private Team awayTeam;
-
-    @Builder
-    public DayOfMatch(LocalDateTime matchStartAt, LocalDateTime bookingStartAt,Stadium stadium, Team awayTeam){
-        this.matchStartAt = matchStartAt;
-        this.bookingStartAt = bookingStartAt;
-        this.stadium = stadium;
-        this.awayTeam = awayTeam;
-    }
 }

@@ -10,7 +10,9 @@ import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
+@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Getter
 @Entity
 public class Customer extends AuditableEntity implements UserDetails {
@@ -32,20 +34,12 @@ public class Customer extends AuditableEntity implements UserDetails {
     private String phoneNumber;
 
     @Column(nullable = false)
-    private Integer point;
+    private Long point;
 
     @Column(nullable = false)
     private String grade;
 
     private LocalDateTime lastLoginAt;
-
-    @Builder
-    public Customer(String email, String password, String name, String phoneNumber){
-        this.email = email;
-        this.password = password;
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

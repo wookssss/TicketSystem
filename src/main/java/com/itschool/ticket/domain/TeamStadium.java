@@ -2,7 +2,13 @@ package com.itschool.ticket.domain;
 
 import com.itschool.ticket.domain.base.AuditableEntity;
 import jakarta.persistence.*;
+import lombok.*;
 
+@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
+@Getter
+@Entity
 public class TeamStadium extends AuditableEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
